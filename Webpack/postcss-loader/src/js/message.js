@@ -2,7 +2,7 @@ import renderToDOM from './render-to-dom'
 import makeMessage from './make-message'
 const waitTime = new Promise((todoOk, todoMal) => {
     setTimeout(() => {
-        todoOk('Han pasado 3 segundos')
+        todoOk('Webpack')
     }, 3000)
 })
 
