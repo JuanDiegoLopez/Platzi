@@ -1,0 +1,15 @@
+{
+  "name": "postcss",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postcss": "postcss src/css/home.css -o dist/css/home.css -w"
+  },
+  "author": "Juan Diego López",
+  "license": "ISC",
+  "devDependencies": {
+    "postcss-cli": "^6.0.0",
+    "postcss-preset-env": "^5.3.0"
+  }
+}
