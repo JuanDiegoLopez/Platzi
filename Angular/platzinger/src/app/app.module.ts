@@ -1,20 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {Routes, RouterModule} from '@angular/router'
+import { Routes, RouterModule } from '@angular/router'
+import { FormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
-import { ConversationComponent } from './conversation/conversation.component';
-import { ProfileComponent } from './profile/profile.component';
-import { MenuComponent } from './menu/menu.component';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { ConversationComponent } from './components/conversation/conversation.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { SearchPipe } from './pipes/search';
 
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'home', component:HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'conversation', component: ConversationComponent},
+  {path: 'conversation/:uid', component: ConversationComponent},
   {path: 'profile', component: ProfileComponent}
 ]
 
@@ -25,11 +27,13 @@ const appRoutes: Routes = [
     HomeComponent,
     ConversationComponent,
     ProfileComponent,
-    MenuComponent
+    MenuComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
