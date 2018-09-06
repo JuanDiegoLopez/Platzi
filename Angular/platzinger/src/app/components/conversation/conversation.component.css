@@ -1,0 +1,37 @@
+.conversation-container {
+    background-image: url('/assets/img/msnbg.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding-top: 20px;
+}
+.conversation-picture {
+    max-width: 150px;
+}
+.conversation-box {
+    height: 250px;
+    padding: 10px;
+    overflow-y: auto;
+}
+.conversation-icon {
+    width: 50px;
+    margin-top: 6px;
+}
+.conversation-buttons {
+    margin: 0;
+    padding: 5px;
+    border: 1px solid #ced4da;
+    border-top: none;
+}
+.message {
+    border-radius: 5px;
+    padding: 2px 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+.friend-message {
+    background-color: #e9ebec;
+}
+.me-message {
+    background-color: #49baee61;
+    float: right;
+} 

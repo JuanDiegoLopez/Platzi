@@ -1,7 +1,7 @@
 <div class="login-container">
   <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col-md-3">
+    <div class="row justify-content-center">
+      <div class="col-xs-3">
         <div class="avatar-frame-offline marto15 marbo15">
           <img class="avatar-img img-fluid" src="assets/img/generic_avatar.png" alt="Avatar">
         </div>
@@ -13,17 +13,18 @@
           <h3>Inciar Sesión</h3>
         </div>
         <div class="bordered-container">
-          <input class="form-control marbo15" type="email" placeholder="Ingrese email">
-          <input class="form-control marbo15" type="password" placeholder="Ingrese contraseña">
-          <input *ngIf="operation == 'register'" class="form-control marbo15" type="text" placeholder="Ingrese nick">
+          <input [(ngModel)]="email" class="form-control marbo15" type="email" placeholder="Ingrese email">
+          <input [(ngModel)]="password" class="form-control marbo15" type="password" placeholder="Ingrese contraseña">
+          <input [(ngModel)]="nick" *ngIf="operation == 'register'" class="form-control marbo15" type="text" placeholder="Ingrese nick">
         </div>
         <div class="center marto15">
-          <a href="" *ngIf="operation == 'login'" class="btn btn-success">Inciar Sesión</a>
-          <a href="" *ngIf="operation == 'register'" class="btn btn-primary">Registrarme</a>
+          <button type="button" (click)="login()" *ngIf="operation == 'login'" class="btn btn-success">Inciar Sesión</button>
+          <button type="button" (click)="loginWithFacebook()" *ngIf="operation == 'login'" class="btn btn-primary">Inciar Sesión con Facebook</button>
+          <button type="button" (click)="register()" *ngIf="operation == 'register'" class="btn btn-secondary">Registrarme</button>
         </div>
         <div class="marto15 center">
-            <p *ngIf="operation == 'register'">Ya tienes cuenta? Has <a (click)="operation = 'login'">Login</a></p>
-            <p *ngIf="operation == 'login'">No tienes cuenta? <a (click)="operation = 'register'">Regístrate</a></p>
+            <p *ngIf="operation == 'register'">Ya tienes cuenta? Has <a (click)="operation = 'login'"><strong>Login</strong></a></p>
+            <p *ngIf="operation == 'login'">No tienes cuenta? <a (click)="operation = 'register'"><strong>Regístrate</strong></a></p>
         </div>
       </div>
     </div>

@@ -3,3 +3,12 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
+.avatar-img {
+    width: 200px;
+}
+.btn {
+    margin-right: 5px;
+}
+a {
+    cursor: pointer;
+}

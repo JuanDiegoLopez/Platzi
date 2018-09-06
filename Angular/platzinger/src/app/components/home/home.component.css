@@ -1,3 +1,24 @@
-.user-status {
-    width: 20px;
+.home-container {
+    background-image: url('/assets/img/msnbg.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.white-border-class {
+    border: 2px solid rgba(255,255,255, .75);
+    padding: 8px;
+}
+.home-head-container {
+    background-color: rbga(255,255,255, .50);
+    padding: 15px;
+    padding-left: 20px;
+}
+.home-avatar-picture {
+    max-width: 100px;
+}
+.white-container-padded {
+    padding: 15px;
+    background-color: #feffff;
+}
+.friend-item {
+    cursor: pointer;
 }

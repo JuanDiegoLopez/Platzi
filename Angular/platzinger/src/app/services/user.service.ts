@@ -1,52 +1,27 @@
-import { Injectable } from '@angular/core';
-import { User } from '../interfaces/user';
+import { Injectable } from '@angular/core'
+import { User } from '../interfaces/user'
+import { AngularFireDatabase } from 'angularfire2/database'
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  friends: User[]
-  constructor() { 
-    let user1: User = {
-      nick: 'Juan',
-      age: 28,
-      email: 'juandlopez@msn.com',
-      friend: true,
-      uid: 1,
-      status: 'online'
-    }
-    let user2: User = { 
-      nick: 'Eduardo',
-      subnick: 'Mi mensaje personal',
-      age: 28,
-      email: 'eduardo@platzi.com',
-      friend: true,
-      uid: 2,
-      status: 'offline'
-    }
-    let user3: User = {
-      nick: 'Yuliana',
-      subnick: 'Mi mensaje personal',
-      age: 25,
-      email: 'yuliana@platzi.com',
-      friend: true,
-      uid: 3,
-      status: 'busy'
-    }
-    let user4: User = {
-      nick: 'Freddy',
-      subnick: 'Mi mensaje personal',
-      age: 28,
-      email: 'freddy@platzi.com',
-      friend: false,
-      uid: 4,
-      status: 'away'
-    }
+  constructor(private angularFireDatabase: AngularFireDatabase) {}
 
-    this.friends = [user1, user2, user3, user4]
+  getUsers () {
+    return this.angularFireDatabase.list('/users')
   }
 
-  getFriends() {
-    return this.friends
+  getUserById (uid) {
+    return this.angularFireDatabase.object(`/users/${uid}`)
+  }
+
+  createOrUpdateUser (user) {
+    return this.angularFireDatabase.object(`/users/${user.uid}`).set(user)
+  }
+  
+  handleFatalError (err) {
+    console.log('Faltal error in User service')
+    console.log(err)
   }
 }
