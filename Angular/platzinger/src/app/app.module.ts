@@ -17,13 +17,16 @@ import { AngularFireStorageModule } from 'angularfire2/storage'
 import { AngularFireAuthModule } from 'angularfire2/auth'
 import { AngularFireDatabaseModule } from 'angularfire2/database'
 import { environment } from '../environments/environment'
+import { AuthGuard } from './services/auth.guard';
+
+import { ImageCropperModule } from 'ngx-image-cropper'
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'home', component:HomeComponent},
+  {path: 'home', component:HomeComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'conversation/:uid', component: ConversationComponent},
-  {path: 'profile', component: ProfileComponent}
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]}
 ]
 
 @NgModule({
@@ -44,7 +47,8 @@ const appRoutes: Routes = [
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    ImageCropperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

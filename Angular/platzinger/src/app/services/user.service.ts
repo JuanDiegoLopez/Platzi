@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core'
-import { User } from '../interfaces/user'
 import { AngularFireDatabase } from 'angularfire2/database'
 
 @Injectable({
@@ -20,6 +19,10 @@ export class UserService {
     return this.angularFireDatabase.object(`/users/${user.uid}`).set(user)
   }
   
+  setAvatar (avatar, uid) {
+    return this.angularFireDatabase.object(`/users/${uid}/avatar`).set(avatar)
+  }
+
   handleFatalError (err) {
     console.log('Faltal error in User service')
     console.log(err)

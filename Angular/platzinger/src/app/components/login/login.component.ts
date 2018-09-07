@@ -25,7 +25,23 @@ export class LoginComponent implements OnInit {
     try {
       const data = await this.authService.LoginWithEmail(this.email, this.password)
       alert('Loggeado correctamente')
-      console.log(data)
+      this.router.navigate(['home'])
+    } catch (err) {
+      this.authService.handleFatalError(err)
+    }
+  }
+
+  async loginWithFacebook () {
+    try {
+      const data = await this.authService.loginWithFacebook()
+      alert('Loggeado con Facebook correctamente')
+      const user = {
+        uid: data.user.uid,
+        email: data.user.email,
+        nick: data.user.displayName,
+        status: 'online'
+      }
+      if (data.additionalUserInfo.isNewUser) this.createUser(user)
       this.router.navigate(['home'])
     } catch (err) {
       this.authService.handleFatalError(err)
@@ -33,35 +49,27 @@ export class LoginComponent implements OnInit {
   }
 
   async register () {
-    let user = {}
     try {
       const data = await this.authService.registerWithEmail(this.email, this.password)
-      user = {
+      const user = {
         uid: data.user.uid,
         email: this.email,
-        nick: this.nick
+        nick: this.nick,
+        status: 'online'
       }
+      this.createUser(user)
     } catch (err) {
       this.authService.handleFatalError(err)
     }
+  }
 
+  async createUser (user) {
     try {
       const data = await this.userService.createOrUpdateUser(user)
       alert('Usuario registrado satisfactoriamente')
-      this.password = 'login'
+      this.operation = 'login'
     } catch (err) {
       this.userService.handleFatalError(err)
-    }
-
-  }
-
-  async loginWithFacebook () {
-    try {
-      const data = await this.authService.loginWithFacebook()
-      alert('Logged with facebook successful!')
-      console.log(data)
-    } catch (err) {
-      this.authService.handleFatalError(err)
     }
   }
 }
