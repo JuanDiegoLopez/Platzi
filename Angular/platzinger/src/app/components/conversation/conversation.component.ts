@@ -148,8 +148,7 @@ export class ConversationComponent implements OnInit {
       this.pictureMessage = this.angularFireStorage.ref(`messagesPictures/${currentImageId}|${this.conversationId}.jpg`).getDownloadURL()
     } catch (err) {
       console.log(err)
-    }
-    
+    }   
     this.pictureMessage.subscribe(async url => {
       const message = {
         uid: this.conversationId,
