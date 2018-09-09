@@ -1,12 +1,12 @@
 <div class="conversation-container" [ngClass]="{'shaker': shake}">
   <div class="container" *ngIf="friend && user">
     <div class="row">
-      <div class="col-md-3 col-sm-5">
+      <div class="col-lg-2 col-md-3 col-sm-5">
         <div class="avatar-frame-online">
           <img class="conversation-picture" [src]="friend.avatar || '/assets/img/generic_avatar.png'" alt="Avatar">
         </div>
       </div>
-      <div class="col-md-9 col-sm-7">
+      <div class="col-lg-10 col-md-9 col-sm-7">
         <h2>{{ friend.nick }}<small>({{ friend.status }})</small></h2>
         <h5>{{ friend.subnick }}</h5>
         <hr>
@@ -20,13 +20,13 @@
       </div>
     </div>
     <div class="row marto15">
-      <div class="col-md-3 col-sm-5">
+      <div class="col-lg-2 col-md-3 col-sm-5">
         <div class="avatar-frame-online">
           <img class="conversation-picture img-fluid" [src]="user.avatar || '/assets/img/generic_avatar.png'" alt="Avatar">
         </div>
       </div>
-      <div class="col-md-9 col-sm-7">
-        <textarea [(ngModel)]="textMessage"  (keyup.enter)="sendMessage()" class="form-control" rows="5"></textarea>
+      <div class="col-lg-10 col-md-9 col-sm-7">
+        <textarea [(ngModel)]="textMessage"  (keyup.enter)="sendMessage()" class="form-control" rows="3"></textarea>
         <div class="row conversation-buttons">
           <div class="col-xs-auto">
             <img (click)="sendZumbido()" class="conversation-icon" src="/assets/img/zumbido.png" alt="zumbido">

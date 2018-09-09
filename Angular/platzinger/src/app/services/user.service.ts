@@ -23,6 +23,11 @@ export class UserService {
     return this.angularFireDatabase.object(`/users/${uid}/avatar`).set(avatar)
   }
 
+  addFriend (userId, friendId) {
+    this.angularFireDatabase.object(`users/${userId}/friends/${friendId}`).set(friendId)
+    return this.angularFireDatabase.object(`users/${friendId}/friends/${userId}`).set(userId)
+  }
+
   handleFatalError (err) {
     console.log('Faltal error in User service')
     console.log(err)

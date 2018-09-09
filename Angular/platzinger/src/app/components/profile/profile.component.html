@@ -1,15 +1,15 @@
 <div class="profile-container" *ngIf="user">
   <div class="container padto45">
     <div class="row">
-      <div class="col-md-3 col-sm-4 col-xs-12">
+      <div class="col-lg-2 col-md-3 col-sm-4 col-auto">
         <div class="row">
-          <div class="col-sm-12 col">
+          <div class="col-12">
             <div class="avatar-frame-online">
               <img [src]="croppedImage || user.avatar || 'assets/img/generic_avatar.png'" class="img-fluid" alt="Avatar"/>
             </div>
             <hr>
           </div>
-          <div class="col">
+          <div class="col-12">
             <span>Cambiar foto</span><br>
             <label class="custom-file-upload">
               <input type="file" (change)="fileChangeEvent($event)">
@@ -20,7 +20,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-9 col-sm-8">
+      <div class="col-lg-10 col-md-9 col-sm-8 col">
         <image-cropper
           [imageChangedEvent]="imageChangedEvent"
           [maintainAspectRatio]="true"

@@ -14,7 +14,7 @@
         </div>
         <div class="bordered-container">
           <input [(ngModel)]="email" class="form-control marbo15" type="email" placeholder="Ingrese email">
-          <input [(ngModel)]="password" class="form-control marbo15" type="password" placeholder="Ingrese contraseña">
+          <input [(ngModel)]="password"  (keyup.enter)="login()" class="form-control marbo15" type="password" placeholder="Ingrese contraseña">
           <input [(ngModel)]="nick" *ngIf="operation == 'register'" class="form-control marbo15" type="text" placeholder="Ingrese nick">
         </div>
         <div class="center marto15">

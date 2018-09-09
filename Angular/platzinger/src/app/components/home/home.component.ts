@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../interfaces/user';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RequestsService } from '../../services/requests.service';
 
 @Component({
   selector: 'app-home',
@@ -14,10 +15,12 @@ export class HomeComponent implements OnInit {
   query: string = ''
   userUid: string
   user: User
+  friendEmail: string = ''
 
   constructor(private userService: UserService,
               private authService: AuthService,
-              private router: Router) {
+              private modalService: NgbModal,
+              private requestsService: RequestsService) {
 
     this.authService.getStatus().subscribe(status => {
       if (status)
@@ -35,5 +38,29 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      
+    }, (reason) => {
+      
+    });
+  }
+
+  async sendRequest() {
+    const request = {
+      timestamp: Date.now(),
+      receiver_email: this.friendEmail,
+      sender: this.user.uid,
+      status: 'pending'
+    }
+
+    try {
+      await this.requestsService.createRequest(request)
+      alert('Solicitud enviada')
+    } catch (err) {
+      this.requestsService.handleError(err)
+    }
   }
 }
