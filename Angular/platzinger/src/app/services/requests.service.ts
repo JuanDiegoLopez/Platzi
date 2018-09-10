@@ -15,7 +15,7 @@ export class RequestsService {
 
   setRequestStatus(request, status) {
     const cleanEmail = request.receiver_email.replace('.', ',')
-    return this.angularFireDatabase.object(`requests/${cleanEmail}/${request.sender}/${status}`).set(status)
+    return this.angularFireDatabase.object(`requests/${cleanEmail}/${request.sender}/status`).set(status)
   }
 
   getRequestsForEmail (email) {

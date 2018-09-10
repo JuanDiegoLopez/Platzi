@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../interfaces/user';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { RequestsService } from '../../services/requests.service';
 
 @Component({
@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   userUid: string
   user: User
   friendEmail: string = ''
+  modalReference: NgbModalRef
 
   constructor(private userService: UserService,
               private authService: AuthService,
@@ -41,11 +42,7 @@ export class HomeComponent implements OnInit {
   }
 
   open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      
-    }, (reason) => {
-      
-    });
+    this.modalReference = this.modalService.open(content)
   }
 
   async sendRequest() {
@@ -62,5 +59,6 @@ export class HomeComponent implements OnInit {
     } catch (err) {
       this.requestsService.handleError(err)
     }
+    this.modalReference.close()
   }
 }

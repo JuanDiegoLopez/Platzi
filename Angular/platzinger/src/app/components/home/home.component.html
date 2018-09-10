@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-lg-2 col-md-3 col-sm-4 col-auto">
             <div class="avatar-frame-online">
-              <img [src]="user.avatar || 'assets/img/generic_avatar.png'" alt="Avatar">
+              <img class="img-fluid" [src]="user.avatar || 'assets/img/generic_avatar.png'" alt="Avatar">
             </div>
           </div>
           <div class="col-lg-10 col-md-9 col-sm-8 col">
@@ -51,12 +51,10 @@
     </button>
   </div>
   <div class="modal-body">
-    <div class="row">
-    </div>
     <b>Ingresa email de tu amigo</b>
     <input type="email" class="form-control" placeholder="Email" [(ngModel)]="friendEmail" (keyup.enter)="sendRequest()">
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="sendRequest()">Enviar</button>
+    <button type="button" class="btn btn-primary" (click)="sendRequest()">Enviar</button>
   </div>
 </ng-template>

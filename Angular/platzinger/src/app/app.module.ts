@@ -53,7 +53,7 @@ const appRoutes: Routes = [
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     AngularFireDatabaseModule,
     ImageCropperModule,
-    NgbModule,
+    NgbModule.forRoot(),
     BootstrapModalModule.forRoot({container: document.body})
   ],
   providers: [],
