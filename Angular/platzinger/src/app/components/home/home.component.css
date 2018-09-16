@@ -16,9 +16,6 @@
     padding: 15px;
     background-color: transparent;
 }
-.friend-item {
-    cursor: pointer;
-}
 .modal-header {
     color: white;
     background: rgba(179,220,237,1);

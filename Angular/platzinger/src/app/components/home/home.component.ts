@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   userUid: string
   user: User
   friendEmail: string = ''
+  friendMessage: string = ''
   modalReference: NgbModalRef
 
   constructor(private userService: UserService,
@@ -25,17 +26,13 @@ export class HomeComponent implements OnInit {
 
     this.authService.getStatus().subscribe(status => {
       if (status)
-        this.userUid = status.uid
+        this.userService.getUserById(status.uid).valueChanges().subscribe((user: User) => {
+          this.user = user
+          if (this.user.friends) {
+            this.user.friends = Object.values(this.user.friends)
+          }
+        }, err => this.userService.handleFatalError(err))
     })
-
-    this.userService.getUsers().valueChanges()
-    .subscribe((data: User[]) => {
-      this.friends = data
-      this.user = this.friends.find(user => user.uid == this.userUid)
-    }, err => {
-      this.userService.handleFatalError(err)
-    })
-    
   }
 
   ngOnInit() {
@@ -49,6 +46,7 @@ export class HomeComponent implements OnInit {
     const request = {
       timestamp: Date.now(),
       receiver_email: this.friendEmail,
+      message: this.friendMessage,
       sender: this.user.uid,
       status: 'pending'
     }

@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col-lg-4 col-sm-3">
           <div class="avatar-frame-online">
-              <img [src]="user.avatar || 'assets/img/generic_avatar.png'" alt="Avatar">
+              <img [src]="user.avatar || 'assets/img/generic_avatar.png'" alt="Avatar" class="img-fluid">
           </div>
         </div>
         <div class="col-lg-8 col-sm-9">
@@ -19,6 +19,7 @@
           <small>{{ user.email }}</small>
           <br>
           <small>Te ha enviado una solicitud de amistad</small>
+          <p>{{ currentRequest.message }}</p>
         </div>
         <hr>
         <div class="col-sm-12 marto15">
