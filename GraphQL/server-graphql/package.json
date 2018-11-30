@@ -1,0 +1,21 @@
+{
+  "name": "server-graphql",
+  "version": "1.0.0",
+  "description": "A simple graphQL server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "serve": "nodemon index.js"
+  },
+  "author": "Juan Diego López",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server-express": "^2.2.5",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "graphql": "^14.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.7"
+  }
+}
