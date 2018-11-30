@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-2 col-md-3 col-sm-5">
         <div class="avatar-frame-online">
-          <img class="conversation-picture" [src]="friend.avatar || '/assets/img/generic_avatar.png'" alt="Avatar">
+          <img class="conversation-picture" [src]="friend.avatar || 'assets/img/generic_avatar.png'" alt="Avatar">
         </div>
       </div>
       <div class="col-lg-10 col-md-9 col-sm-7">
@@ -22,14 +22,14 @@
     <div class="row marto15">
       <div class="col-lg-2 col-md-3 col-sm-5">
         <div class="avatar-frame-online">
-          <img class="conversation-picture img-fluid" [src]="user.avatar || '/assets/img/generic_avatar.png'" alt="Avatar">
+          <img class="conversation-picture img-fluid" [src]="user.avatar || 'assets/img/generic_avatar.png'" alt="Avatar">
         </div>
       </div>
       <div class="col-lg-10 col-md-9 col-sm-7">
         <textarea [(ngModel)]="textMessage"  (keyup.enter)="sendMessage()" class="form-control" rows="3"></textarea>
         <div class="row conversation-buttons">
           <div class="col-xs-auto">
-            <img (click)="sendZumbido()" class="conversation-icon" src="/assets/img/zumbido.png" alt="zumbido">
+            <img (click)="sendZumbido()" class="conversation-icon" src="assets/img/zumbido.png" alt="zumbido">
           </div>
           <div class="col">
             <label class="custom-file-upload">

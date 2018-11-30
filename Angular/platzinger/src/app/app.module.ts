@@ -26,10 +26,10 @@ import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { ContactComponent } from './components/contact/contact.component';
 
 const appRoutes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'home', component:HomeComponent, canActivate: [AuthGuard]},
+  {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'conversation/:uid', component: ConversationComponent},
+  {path: 'home', component:HomeComponent, canActivate: [AuthGuard]},
+  {path: 'conversation/:uid', component: ConversationComponent, canActivate: [AuthGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]}
 ]
 
