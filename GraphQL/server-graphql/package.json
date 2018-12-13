@@ -4,18 +4,27 @@
   "description": "A simple graphQL server",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "serve": "nodemon index.js"
+    "start": "NODE_ENV=production node server.js",
+    "dev": "cross-env NODE_ENV=development nodemon server.js",
+    "lint": "standard",
+    "lint:fix": "standard --fix"
   },
   "author": "Juan Diego López",
   "license": "MIT",
   "dependencies": {
     "apollo-server-express": "^2.2.5",
     "body-parser": "^1.18.3",
+    "casual": "^1.5.19",
+    "chalk": "^2.4.1",
     "express": "^4.16.4",
-    "graphql": "^14.0.2"
+    "graphql": "^14.0.2",
+    "graphql-tools": "^4.0.3",
+    "sequelize": "^4.41.2",
+    "sqlite3": "^4.0.4"
   },
   "devDependencies": {
-    "nodemon": "^1.18.7"
+    "cross-env": "^5.2.0",
+    "nodemon": "^1.18.7",
+    "standard": "^12.0.1"
   }
 }
