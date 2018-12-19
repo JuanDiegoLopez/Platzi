@@ -14,10 +14,14 @@ const typeDef = `
     comments: [Comment]
   }
 
-  type Comment {
-    id: ID!
-    name: String!
-    text: String!
+  input NewCourse {
+    title: String!
+    description: String!
+  }
+
+  input UpdatedCourse {
+    title: String
+    description: String
   }
 `
 
@@ -25,6 +29,22 @@ const resolvers = {
   Query: {
     courses: () => Course.findAll({ include: ['teacher', 'comments'] }),
     course: (_, args) => Course.findByPk(args.id, { include: ['teacher', 'comments'] })
+  },
+  Mutation: {
+    courseAdd: (_, args) => Course.create(args.course),
+    courseUpdate: async (_, args) => {
+      await Course.update(args.course, { where: { id: args.id } }).catch(error => console.error(error))
+      return Course.findByPk(args.id, { include: ['teacher', 'comments'] })
+    },
+    courseDelete: async (_, args) => {
+      try {
+        const courseDeleted = await Course.findByPk(args.id, { include: ['teacher', 'comments'] })
+        await Course.destroy({ where: { id: args.id } })
+        return courseDeleted
+      } catch (error) {
+        console.error(error)
+      }
+    }
   }
 }
 

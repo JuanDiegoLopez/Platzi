@@ -11,7 +11,15 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-const server = new ApolloServer({ schema })
+const server = new ApolloServer({
+  schema,
+  formatError: (error) => {
+    return {
+      message: error.message
+    }
+  }
+})
+
 server.applyMiddleware({ app })
 
 module.exports = app

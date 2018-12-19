@@ -37,9 +37,16 @@ const resolvers = {
   Mutation: {
     teacherAdd: (_, args) => Teacher.create(args.teacher),
     teacherUpdate: async (_, args) => {
+      await Teacher.update(args.teacher, { where: { id: args.id } }).catch(error => console.log(error))
+      return Teacher.findByPk(args.id, { include: ['courses'] })
+    },
+    teacherDelete: async (_, args) => {
       try {
-        await Teacher.update(args.teacher, { where: { id: args.id } })
-        return Teacher.findByPk(args.id, { include: ['courses'] }) 
+        const teacherDeleted = await Teacher.findByPk(args.id, { include: ['courses'] })
+        const rowDeleted = await Teacher.destroy({ where: { id: args.id } })
+        
+        if (rowDeleted > 0) return teacherDeleted
+        return new Error(`El profesor con id ${args.id} no existe`)
       } catch (error) {
         console.log(error)
       }
